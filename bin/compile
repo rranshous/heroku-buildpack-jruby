@@ -54,7 +54,8 @@ function download_and_install_jdk {
     echo "JAVA_HOME: $JAVA_HOME"
     echo "JAVA: $(which java)"
     PROFILE_PATH="$BUILD_DIR/.profile.d/jvmcommon.sh"
-    echo 'export PATH="/tmp/build/.djk//bin:$PATH' >> $PROFILE_PATH
+    echo 'ADDING: export PATH="/tmp/build/.djk//bin:$PATH"'
+    echo 'export PATH="/tmp/build/.djk//bin:$PATH"' >> $PROFILE_PATH
     echo "PROFILE: $(cat $PROFILE_PATH)"
     jdk_overlay ${BUILD_DIR}
     echo "done"
