@@ -32,10 +32,12 @@ function download_and_install_jdk {
 
   # create default system.properties for apps that had the jdk vendored in
   if [ -f ${CACHE_DIR}/.jdk/vendor ] && [ ! -f ${BUILD_DIR}/system.properties ]; then
+    echo "IF 1"
     echo "java.runtime.version=1.6" > ${BUILD_DIR}/system.properties
   fi
 
   if [ -f ${CACHE_DIR}/system.properties ] && [ ! -f ${BUILD_DIR}/system.properties ]; then
+    echo "IF 2"
     cp ${CACHE_DIR}/system.properties ${BUILD_DIR}/system.properties
   fi
 
@@ -67,6 +69,8 @@ function download_jruby_and_install_default_gems {
     PATH=$CACHE_DIR/jruby-$VERSION/bin:$PATH
 
     echo "-----> Installing JRuby-OpenSSL, Bundler and Rake"
+    echo "JAVA: $(which java)"
+    echo "PATH: $PATH"
     jruby $JRUBY_OPTS -S jgem install jruby-openssl bundler rake | indent
   fi
 }
