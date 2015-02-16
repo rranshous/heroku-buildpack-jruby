@@ -24,7 +24,7 @@ function indent {
 function download_and_install_jdk {
   echo "HERE
   $(ls -l)"
-  curl --silent --location http://heroku-jvm-common.s3.amazonaws.com/jvm-buildpack-common.tar.gz | tar xz
+  sudo sh -c "curl --silent --location http://heroku-jvm-common.s3.amazonaws.com/jvm-buildpack-common.tar.gz | tar xz"
   . bin/java
 
   # create default system.properties for apps that had the jdk vendored in
