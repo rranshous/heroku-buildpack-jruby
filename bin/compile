@@ -13,6 +13,9 @@ unset GIT_DIR
 BUILD_DIR=$1
 CACHE_DIR=$2
 
+echo "BUILDDIR: $BUILD_DIR"
+echo "CACHEDIR: $CACHE_DIR"
+
 function indent {
   c='s/^/       /'
   case $(uname) in
@@ -24,7 +27,7 @@ function indent {
 function download_and_install_jdk {
   echo "HERE
   $(ls -l)"
-  sudo sh -c "curl --silent --location http://heroku-jvm-common.s3.amazonaws.com/jvm-buildpack-common.tar.gz | tar xz"
+  curl --silent --location http://heroku-jvm-common.s3.amazonaws.com/jvm-buildpack-common.tar.gz | tar xz
   . bin/java
 
   # create default system.properties for apps that had the jdk vendored in
