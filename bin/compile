@@ -12,6 +12,8 @@ unset GIT_DIR
 
 BUILD_DIR=$1
 CACHE_DIR=$2
+START=$(pwd)
+cd /tmp
 
 function indent {
   c='s/^/       /'
